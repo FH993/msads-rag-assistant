@@ -1,0 +1,7 @@
+[theme]
+# University of Chicago brand palette
+primaryColor = "#800000"            # UChicago maroon
+backgroundColor = "#FFFFFF"         # white
+secondaryBackgroundColor = "#F6F2F2" # soft warm grey for chat/sidebar
+textColor = "#1A1A1A"
+font = "sans serif"

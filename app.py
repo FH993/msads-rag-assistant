@@ -1,15 +1,86 @@
+import base64
+from pathlib import Path
+
 import streamlit as st
-from rag_chain import get_answer  
+
+from rag_chain import get_answer
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Page config
+# ─────────────────────────────────────────────────────────────────────────────
+ASSETS = Path(__file__).parent / "assets"
+favicon = str(ASSETS / "favicon.png")
 
 st.set_page_config(
     page_title="UChicago MS-ADS Assistant",
-    page_icon="🎓",
-    layout="centered"
+    page_icon=favicon,
+    layout="centered",
 )
 
-st.title("🎓 UChicago MS in Applied Data Science")
-st.subheader("Ask me anything about the program!")
+# ─────────────────────────────────────────────────────────────────────────────
+# UChicago brand styling (maroon + white)
+# ─────────────────────────────────────────────────────────────────────────────
+MAROON = "#800000"
 
+st.markdown(
+    f"""
+    <style>
+    .stApp {{ background: #FFFFFF; }}
+
+    /* Header banner */
+    .uc-header {{
+        display: flex; align-items: center; gap: 14px;
+        border-bottom: 4px solid {MAROON};
+        padding: 6px 0 16px 0; margin-bottom: 8px;
+    }}
+    .uc-header img.logo {{ height: 50px; width: auto; flex: 0 0 auto; }}
+    .uc-title {{
+        font-family: Georgia, "Times New Roman", serif;
+        color: {MAROON};
+        font-size: 2.4rem; font-weight: 700; line-height: 1.15; margin: 0;
+    }}
+    .uc-sub {{
+        color: #4a4a4a; font-size: 1.2rem; margin-top: 2px; line-height: 1.3;
+    }}
+
+    /* Chat bubbles */
+    [data-testid="stChatMessage"] {{ background: transparent; }}
+    /* User messages: maroon accent */
+    [data-testid="stChatMessageContent"] {{ font-size: 1rem; }}
+
+    /* Buttons / inputs */
+    .stChatInput textarea {{ border-radius: 10px !important; }}
+    [data-testid="stChatInput"] {{ border: 1.5px solid #e3d6d6; border-radius: 12px; }}
+
+    /* Sources expander */
+    .streamlit-expanderHeader {{ color: {MAROON}; font-weight: 600; }}
+    a {{ color: {MAROON}; }}
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Header — DSI logo + program wordmark
+# ─────────────────────────────────────────────────────────────────────────────
+logo_b64 = base64.b64encode((ASSETS / "dsi_logo.svg").read_bytes()).decode()
+
+st.markdown(
+    f"""
+    <div class="uc-header">
+        <img class="logo" src="data:image/svg+xml;base64,{logo_b64}" alt="UChicago Data Science Institute" />
+        <div>
+            <p class="uc-title">MS in Applied Data Science Assistant</p>
+            <p class="uc-sub">Ask me anything about the University of Chicago MS-ADS program.</p>
+        </div>
+    </div>
+    """,
+    unsafe_allow_html=True,
+)
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Chat
+# ─────────────────────────────────────────────────────────────────────────────
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
