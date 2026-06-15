@@ -6,7 +6,7 @@
 > Chicago **MS in Applied Data Science** program, grounding every answer in official
 > program web pages and citing its sources.
 
-**🔗 Live demo:** [https://msads-rag-assistant.streamlit.app](#)
+**🔗 Live demo:** [Streamlit App](https://msads-rag-assistant-fh993.streamlit.app)
 
 ---
 
