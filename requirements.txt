@@ -1,0 +1,11 @@
+streamlit>=1.40
+langchain-core>=0.3
+langchain-openai>=0.2
+langchain-chroma>=0.1
+langchain-text-splitters>=0.3
+chromadb>=0.5
+openai>=1.50
+tiktoken>=0.8
+beautifulsoup4>=4.12
+requests>=2.31
+datasets>=2.19
