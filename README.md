@@ -7,10 +7,6 @@
 > program web pages and citing its sources.
 
 **🔗 Live demo:** [https://msads-rag-assistant.streamlit.app](#)
-**📺 Walkthrough (30s):** [add a Loom or GIF link]
-
-<!-- Add a screenshot or GIF here once deployed: -->
-<!-- ![demo](docs/demo.gif) -->
 
 ---
 
